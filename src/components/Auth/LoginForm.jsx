@@ -76,7 +76,7 @@ const LoginForm = () => {
       }}
       >
         {({ errors, touched }) => (
-          <div className="p-8 rounded-lg max-w-md w-full bg-[#21412F] ">
+          <div className="p-8 rounded-lg max-w-md w-full bg-[#21412F]shadow-sm">
             <div className="flex justify-center mb-6 cursor-pointer lg:font-semibold">
               <h3 className='font-bold py-1 px-1 bg-white'>YumFinds</h3>
             </div>
