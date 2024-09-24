@@ -7,9 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 // Validation using Yup
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
   username: Yup.string()
     .required('Username is required!')
     .matches(/^[a-zA-Z0-9]+$/, 'Username can only contain letters and numbers')
@@ -24,7 +21,7 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-const  RegisterForm = () => {
+const  ForgotPasswordForm= () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,28 +34,24 @@ const  RegisterForm = () => {
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
       <Formik
-        initialValues={{ username: '', password: '', email: '' }}
+        initialValues={{ username: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           const userName = values.username;
-          toast.success(`Welcome, ${userName}!`);
+          toast.success(`Check your email!`);
           resetForm();
-          navigate('/home'); 
+          navigate('/'); 
         }}
         validateOnChange={false}
         validateOnBlur={false}
         validate={(values) => {
-        const errors = '';
-        if(!values.email) {
-          toast.error('Please enter your email')
-        }
+        const errors = {};
         if (!values.username) {
           toast.error('Please enter a username!');
         } else if (values.username.length < 3) {
             toast.error('Username must be at least 3 characters long!');
           }
         if (!values.password) {
-            toast.error('Please enter your password!');
           } else if (values.password.length < 8) {
             toast.error('Password must be at least 8 characters long!');
           } else if (!/[A-Z]/.test(values.password)) {
@@ -70,35 +63,25 @@ const  RegisterForm = () => {
           } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(values.password)) {
             toast.error('Password must contain at least one special character!');
           }
-          return errors;
+        return errors;
       }}
       >
         {({ errors, touched }) => (
-          <div className="p-8 rounded-lg max-w-md w-full bg-[#21412F] shadow-sm ">
+          <div className="p-8 rounded-lg max-w-md w-full bg-[#21412F]shadow-sm">
             <div className="flex justify-center mb-6 cursor-pointer lg:font-semibold">
               <h3 className='font-bold py-1 px-1 bg-white'>YumFinds</h3>
             </div>
 
-            <h1 className="text-3xl font-bold text-white text-center mb-6">
+            {/* <h1 className="text-3xl font-bold text-white text-center mb-6">
               Prepare Your Next Favorite Dish With <span className='text-green-900'>YumFind</span>
-            </h1>
+            </h1> */}
             {/* <p className="text-white text-center mb-8">
               Unlock the joy of cooking with step-by-step recipes tailored to your taste. Explore your favorite dishes today!
             </p> */}
 
             <Form>
               <div className="mb-4">
-
-              <label htmlFor="email" className="block text-sm font-medium text-white mb-2 text-left">Email</label>
-                <Field
-                  className={`p-2 w-full bg-[#21412F] text-gray-600 border ${errors.email && touched.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-white outline-none`}
-                  type="email"
-                  name="email"
-                  placeholder="e.g, johndoe@gmail.com"
-                />
-                <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
-
-                <label htmlFor="username" className="block text-sm font-medium text-white mb-2 mt-2 text-left">Username</label>
+                <label htmlFor="username" className="block text-sm font-medium text-white mb-2 text-left">Username</label>
                 <Field
                   className={`p-2 w-full bg-[#21412F] text-gray-600 border ${errors.username && touched.username ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-white outline-none`}
                   type="text"
@@ -108,7 +91,7 @@ const  RegisterForm = () => {
                 />
                 <ErrorMessage name="username" component="div" className="text-red-500 text-sm mt-1" />
 
-                <label htmlFor="password" className="block text-sm font-medium text-white mb-2 text-left mt-2">Password</label>
+                <label htmlFor="password" className="block text-sm font-medium text-white mb-2 text-left mt-4">Password</label>
                 <Field
                   className={`p-2 w-full border bg-[#21412F] text-gray-600 ${errors.password && touched.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-white outline-none`}
                   type="password"
@@ -117,17 +100,19 @@ const  RegisterForm = () => {
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
               </div>
-              
+              <div>
+                <Link to='/' className='flex justify-end text-[#7C7979] underline'>Login</Link>
+              </div>
+
               <button
                 type="submit"
                 className="w-5/12 mx-auto mb-24 bg-white text-md font-bold text-[#21412F] py-3 rounded-md flex items-center justify-center space-x-2 hover:bg-green-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
               >
-                Register
+                Send Reset Link
               </button>
             </Form>
-            
             <div className="text-center">
-              <p className='text-[#7C7979]'>Don't have an account? <Link to='/' className="text-white underline">Login</Link></p>
+              <p className='text-[#7C7979]'>Don't have an account? <Link to='register' className="text-white underline">Register</Link></p>
             </div>
           </div>
         )}
@@ -136,4 +121,4 @@ const  RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default ForgotPasswordForm;

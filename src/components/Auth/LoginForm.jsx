@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
-import { Link, useNavigate } from 'react-router-dom';
 
 // Validation using Yup
 const validationSchema = Yup.object({
@@ -47,29 +47,21 @@ const LoginForm = () => {
         validate={(values) => {
         const errors = {};
         if (!values.username) {
-          errors.username = 'Username is required';
           toast.error('Please enter a username!');
         } else if (values.username.length < 3) {
-            errors.username = 'Username must be at least 3 characters';
             toast.error('Username must be at least 3 characters long!');
           }
         if (!values.password) {
-            errors.password = 'Password is required';
-            toast.error('Please enter your password!');
+            toast.error('Please enter a Password!');
           } else if (values.password.length < 8) {
-            errors.password = 'Password must be at least 8 characters';
             toast.error('Password must be at least 8 characters long!');
           } else if (!/[A-Z]/.test(values.password)) {
-            errors.password = 'Password must contain at least one uppercase letter';
             toast.error('Password must contain at least one uppercase letter!');
           } else if (!/[a-z]/.test(values.password)) {
-            errors.password = 'Password must contain at least one lowercase letter';
             toast.error('Password must contain at least one lowercase letter!');
           } else if (!/[0-9]/.test(values.password)) {
-            errors.password = 'Password must contain at least one number';
             toast.error('Password must contain at least one number!');
           } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(values.password)) {
-            errors.password = 'Password must contain at least one special character';
             toast.error('Password must contain at least one special character!');
           }
         return errors;
@@ -115,7 +107,7 @@ const LoginForm = () => {
 
               <button
                 type="submit"
-                className="w-full mx-auto mb-24 bg-white text-md font-bold text-[#21412F] py-3 rounded-md flex items-center justify-center space-x-2 hover:bg-green-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                className="w-5/12 mx-auto mb-24 bg-white text-md font-bold text-[#21412F] py-3 rounded-md flex items-center justify-center space-x-2 hover:bg-green-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
               >
                 Login
               </button>
