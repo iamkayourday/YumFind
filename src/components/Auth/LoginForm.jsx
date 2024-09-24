@@ -117,7 +117,7 @@ const LoginForm = () => {
                 type="submit"
                 className="w-full mx-auto mb-24 bg-white text-md font-bold text-[#21412F] py-3 rounded-md flex items-center justify-center space-x-2 hover:bg-green-900 hover:text-white transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
               >
-                Explore the Recipes
+                Login
               </button>
             </Form>
             <div className="text-center">
