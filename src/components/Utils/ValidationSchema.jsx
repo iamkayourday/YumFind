@@ -1,5 +1,7 @@
+// Reusable components for Yup Validations
+
 import * as Yup from 'yup';
-// Validation for Email
+// Validation for Email// Add more validation later
 const emailValidation = Yup.string()
     .email('Invalid email address')
     .required('Email is required');
@@ -19,8 +21,5 @@ const passwordValidation = Yup.string()
   .matches(/[0-9]/, 'Password must contain at least one number')
   .matches(/[!@#$%^&*(),.?":{}|<>]/, 'Password must contain at least one special character')
   .required('Password is required');
-
-
-
-
+  
 export { usernameValidation, passwordValidation, emailValidation};
