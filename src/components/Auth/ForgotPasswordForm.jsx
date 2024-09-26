@@ -34,6 +34,8 @@ const  ForgotPasswordForm= () => {
             <div className="flex justify-center mb-6 cursor-pointer lg:font-semibold">
               <h3 className='font-bold py-1 px-1 bg-white'>YumFinds</h3>
             </div>
+
+
             <Form>
               <InputField 
                 label="Email"

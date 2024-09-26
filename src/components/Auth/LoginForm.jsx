@@ -32,6 +32,7 @@ const LoginForm = () => {
         onSubmit={(values, { resetForm }) => {
           const userName = values.username;
           toast.success(`Welcome, ${userName}!`);
+          localStorage.setItem('username', userName);
           resetForm();
           navigate('/home');
         }}
