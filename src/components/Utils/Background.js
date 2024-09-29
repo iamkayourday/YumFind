@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 const Background = (color) => {
   useEffect(() => {
-    console.log('yay')
     document.body.style.backgroundColor = color;
     return () => {
       document.body.style.backgroundColor = '';
