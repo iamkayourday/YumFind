@@ -5,23 +5,23 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 
 const Home = () => {
-  // State variables for recipes, loading status, search term, error message, and username
+  // State variables
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
 
-  // useEffect to fetch recipes and retrieve stored username when component mounts
+  // Fetch recipes and retrieve stored username when page loads
   useEffect(() => {
     fetchRecipes(); // Fetch recipes from the API
-    const storedUsername = localStorage.getItem("username"); // Retrieve username from localStorage
+    const storedUsername = localStorage.getItem("username"); 
     if (storedUsername) {
-      setUsername(storedUsername); // Set the username if found
+      setUsername(storedUsername); 
     }
   }, []);
 
-  // Function to fetch recipes from the API
+  // Fetch recipes from the API
   const fetchRecipes = async () => {
     setLoading(true); // Set loading to true while fetching
     setError(null); // Reset error state
@@ -30,43 +30,43 @@ const Home = () => {
         "https://www.themealdb.com/api/json/v1/1/search.php?s="
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch recipes. Please try again later."); // Throw error if response is not ok
+        throw new Error("Failed to fetch recipes. Please try again later."); 
       }
-      const data = await response.json(); // Parse response data
+      const data = await response.json(); 
       if (!data.meals) {
-        throw new Error("No recipes found"); // Throw error if no meals found
+        throw new Error("No recipes found"); 
       }
-      setRecipes(data.meals); // Set recipes state with fetched meals
+      setRecipes(data.meals); 
     } catch (error) {
-      setError(error.message); // Set error state with error message
+      setError(error.message); 
     } finally {
-      setLoading(false); // Set loading to false after fetching
+      setLoading(false); 
     }
   };
 
   // Function to handle search term input
   const handleSearch = (term) => {
-    setSearchTerm(term); // Update searchTerm state with the input value
+    setSearchTerm(term); 
   };
 
   // Filter recipes based on the search term
   const filteredRecipes = recipes.filter(
     (recipe) =>
-      recipe.strMeal.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      // Remove this line of codes later
-      recipe.strCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      recipe.strArea.toLowerCase().includes(searchTerm.toLowerCase())
+      recipe.strMeal.toLowerCase().includes(searchTerm.toLowerCase())
+      // // Remove this line of codes later
+      // recipe.strCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      // recipe.strArea.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Function to greet users based on the current time
+  // Function to greet users 
   const getGreeting = () => {
-    const currentHour = new Date().getHours(); // Get the current hour
+    const currentHour = new Date().getHours(); 
     if (currentHour < 12) {
-      return "Good Morning"; // Return morning greeting
+      return "Good Morning"; 
     } else if (currentHour < 18) {
-      return "Good Afternoon"; // Return afternoon greeting
+      return "Good Afternoon"; 
     } else {
-      return "Good Evening"; // Return evening greeting
+      return "Good Evening"; 
     }
   };
 
