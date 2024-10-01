@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import PropagateLoader from "react-spinners/PropagateLoader"; // Add loading spinner
+import PropagateLoader from "react-spinners/PropagateLoader"; 
+import Footer from "./Footer";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const RecipeDetails = () => {
     } catch (error) {
       toast.error("Error fetching recipe details!");
     } finally {
-      setLoading(false); // Set loading to false after fetching
+      setLoading(false); 
     }
   };
 
@@ -110,7 +111,9 @@ const RecipeDetails = () => {
       <Link to="/home" className="mt-8 inline-block text-[#21412F] underline">
         Back to Home
       </Link>
+      <Footer />
     </div>
+   
   );
 };
 
