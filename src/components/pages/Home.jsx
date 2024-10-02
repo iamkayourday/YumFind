@@ -71,7 +71,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container mx-auto py-8 text-black">
+    <div className="container mx-auto py-8">
       <h1 className="text-center text-[#21412F] text-4xl font-bold mb-6">
         Finding time to cook can be hard. Finding a recipe shouldn’t be.
       </h1>
@@ -108,7 +108,7 @@ const Home = () => {
           {!filteredRecipes.length ? (
             <p className="text-center text-xl h-screen">
               No matches for "{searchTerm}". Check spelling or try a different
-              search!
+              Recipe!
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">

@@ -56,12 +56,12 @@ const RecipeDetails = () => {
         className="w-full h-64 rounded-md block object-cover"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
         {/* Ingredients List */}
         <div>
           <h2 className="text-2xl mb-4">Ingredients</h2>
           <ul className="list-disc pl-5 block">
-            {Array.from({ length: 20 }, (_, index) => {
+            {Array.map({ length: 20 }, (_, index) => {
               const ingredient = recipe[`strIngredient${index + 1}`];
               const measure = recipe[`strMeasure${index + 1}`];
               return ingredient ? (
