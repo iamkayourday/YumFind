@@ -67,7 +67,7 @@ const LoginForm = () => {
               <div>
                 <Link
                   to="/forgot"
-                  className="flex justify-end text-[#7C7979] underline"
+                  className="flex justify-end text-white underline"
                 >
                   Forgot password?
                 </Link>
