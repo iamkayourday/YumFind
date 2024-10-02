@@ -6,70 +6,62 @@ import Footer from "./Footer";
 
 const Home = () => {
   // State variables
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
-  const [username, setUsername] = useState("");
+  const [recipes, setRecipes] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+  const [username, setUsername] = useState(""); 
 
-  // Fetch default recipes and retrieve stored username when page loads
+  // Fetch recipes and retrieve stored username when the component loads
   useEffect(() => {
-    fetchRecipes(); // Fetch default recipes from the API
-    const storedUsername = localStorage.getItem("username");
+    fetchRecipes(); 
+    const storedUsername = localStorage.getItem("username"); 
     if (storedUsername) {
-      setUsername(storedUsername);
+      setUsername(storedUsername); 
     }
   }, []);
 
   // Fetch recipes from the API
   const fetchRecipes = async (term = "") => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); 
+    setError(null); 
     try {
       let response;
-      // Check if there is a search term
+      // Fetch recipes based on the search term or fetch all if no term is provided
       if (term) {
         response = await fetch(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
         );
       } else {
-        // Fetch default recipes when the page loads
         response = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=");
       }
 
-      const data = await response.json();
+      const data = await response.json(); 
+      // Check if meals were returned and throw an error if not
       if (!data.meals) {
-        throw new Error(term ?  `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!` : "No default recipes found");
+        throw new Error(term ? `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!` : "No default recipes found");
       }
-      setRecipes(data.meals);
+      setRecipes(data.meals); // If no error Shows recipes
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Set error message in state
     } finally {
-      setLoading(false);
+      setLoading(false); // Set loading to false after fetching
     }
   };
 
-  // Trigger search when searchTerm changes
-  useEffect(() => {
-    if (searchTerm) {
-      fetchRecipes(searchTerm); // Fetch recipes based on the search term
-    }
-  }, [searchTerm]);
-
-  // Function to handle search term input
+  // Handle search term and fetch recipe when the search button is clicked
   const handleSearch = (term) => {
-    setSearchTerm(term);
+    fetchRecipes(term); // Triggers the fetch with the provided search term
   };
 
-  // Function to greet users
+  // Generate greeting message based on the current time
   const getGreeting = () => {
-    const currentHour = new Date().getHours();
+    const currentHour = new Date().getHours(); 
     if (currentHour < 12) {
-      return "Good Morning";
+      return "Good Morning"; 
     } else if (currentHour < 18) {
-      return "Good Afternoon";
+      return "Good Afternoon"; 
     } else {
-      return "Good Evening";
+      return "Good Evening"; 
     }
   };
 
@@ -81,7 +73,7 @@ const Home = () => {
 
       {/* Search Bar */}
       <div className="mb-6">
-        <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} /> 
       </div>
 
       {/* Welcome message */}
@@ -106,38 +98,29 @@ const Home = () => {
       ) : error ? (
         <p className="text-center text-xl text-red-600 h-screen">{error}</p>
       ) : (
-        <>
-          {/* Recipe List */}
-          {!recipes.length ? (
-            <p className="text-center text-xl h-screen">
-              No matches for "{searchTerm}". Check spelling or try a different
-              Recipe!
-            </p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-              {recipes.map((recipe) => (
-                <div key={recipe.idMeal} className="rounded-lg shadow-md">
-                  <img
-                    src={recipe.strMealThumb}
-                    alt={recipe.strMeal}
-                    className="w-full h-48 object-cover mt-4"
-                  />
-                  <div className="p-4 bg-[#D9D9D9]">
-                    <Link to={`/recipe/${recipe.idMeal}`}>
-                      <h2 className="text-xl text-[#21412F] font-semibold mb-2">
-                        {recipe.strMeal}
-                      </h2>
-                    </Link>
-                    <p className="text-gray-700">
-                      Category: {recipe.strCategory}
-                    </p>
-                    <p className="text-gray-700">Region: {recipe.strArea}</p>
-                  </div>
-                </div>
-              ))}
+        // Recipe list
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          {recipes.map((recipe) => (
+            <div key={recipe.idMeal} className="rounded-lg shadow-md">
+              <img
+                src={recipe.strMealThumb}
+                alt={recipe.strMeal}
+                className="w-full h-48 object-cover mt-4"
+              />
+              <div className="p-4 bg-[#D9D9D9]">
+                <Link to={`/recipe/${recipe.idMeal}`}>
+                  <h2 className="text-xl text-[#21412F] font-semibold mb-2">
+                    {recipe.strMeal}
+                  </h2>
+                </Link>
+                <p className="text-gray-700">
+                  Category: {recipe.strCategory} 
+                </p>
+                <p className="text-gray-700">Region: {recipe.strArea}</p>
+              </div>
             </div>
-          )}
-        </>
+          ))}
+        </div>
       )}
       <Footer />
     </div>
