@@ -12,61 +12,64 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
 
-  // Fetch recipes and retrieve stored username when page loads
+  // Fetch default recipes and retrieve stored username when page loads
   useEffect(() => {
-    fetchRecipes(); // Fetch recipes from the API
-    const storedUsername = localStorage.getItem("username"); 
+    fetchRecipes(); // Fetch default recipes from the API
+    const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
-      setUsername(storedUsername); 
+      setUsername(storedUsername);
     }
   }, []);
 
   // Fetch recipes from the API
-  const fetchRecipes = async () => {
-    setLoading(true); // Set loading to true while fetching
-    setError(null); // Reset error state
+  const fetchRecipes = async (term = "") => {
+    setLoading(true);
+    setError(null);
     try {
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/search.php?s="
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch recipes. Please try again later."); 
+      let response;
+      // Check if there is a search term
+      if (term) {
+        response = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
+        );
+      } else {
+        // Fetch default recipes when the page loads
+        response = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=");
       }
-      const data = await response.json(); 
+
+      const data = await response.json();
       if (!data.meals) {
-        throw new Error("No recipes found"); 
+        throw new Error(term ?  `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!` : "No default recipes found");
       }
-      setRecipes(data.meals); 
+      setRecipes(data.meals);
     } catch (error) {
-      setError(error.message); 
+      setError(error.message);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
+  // Trigger search when searchTerm changes
+  useEffect(() => {
+    if (searchTerm) {
+      fetchRecipes(searchTerm); // Fetch recipes based on the search term
+    }
+  }, [searchTerm]);
+
   // Function to handle search term input
   const handleSearch = (term) => {
-    setSearchTerm(term); 
+    setSearchTerm(term);
   };
 
-  // Filter recipes based on the search term
-  const filteredRecipes = recipes.filter(
-    (recipe) =>
-      recipe.strMeal.toLowerCase().includes(searchTerm.toLowerCase())
-      // // Remove this line of codes later
-      // recipe.strCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      // recipe.strArea.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Function to greet users 
+  // Function to greet users
   const getGreeting = () => {
-    const currentHour = new Date().getHours(); 
+    const currentHour = new Date().getHours();
     if (currentHour < 12) {
-      return "Good Morning"; 
+      return "Good Morning";
     } else if (currentHour < 18) {
-      return "Good Afternoon"; 
+      return "Good Afternoon";
     } else {
-      return "Good Evening"; 
+      return "Good Evening";
     }
   };
 
@@ -105,14 +108,14 @@ const Home = () => {
       ) : (
         <>
           {/* Recipe List */}
-          {!filteredRecipes.length ? (
+          {!recipes.length ? (
             <p className="text-center text-xl h-screen">
               No matches for "{searchTerm}". Check spelling or try a different
               Recipe!
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-              {filteredRecipes.map((recipe) => (
+              {recipes.map((recipe) => (
                 <div key={recipe.idMeal} className="rounded-lg shadow-md">
                   <img
                     src={recipe.strMealThumb}
