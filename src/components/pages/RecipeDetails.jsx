@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import PropagateLoader from "react-spinners/PropagateLoader"; 
+import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 
 const RecipeDetails = () => {
@@ -28,9 +28,23 @@ const RecipeDetails = () => {
     } catch (error) {
       toast.error("Error fetching recipe details!");
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
+
+  // Create ingredients array
+  const ingredients = [];
+  if (recipe) {
+    for (let i = 1; i <= 20; i++) {
+      if (recipe[`strIngredient${i}`]) {
+        ingredients.push(
+          `${recipe[`strIngredient${i}`]} - ${recipe[`strMeasure${i}`]}`
+        );
+      } else {
+        break;
+      }
+    }
+  }
 
   if (loading) {
     return (
@@ -56,27 +70,21 @@ const RecipeDetails = () => {
         className="w-full h-64 rounded-md block object-cover"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Ingredients List */}
-        <div>
-          <h2 className="text-2xl mb-4">Ingredients</h2>
-          <ul className="list-disc pl-5 block">
-            {Array.from({ length: 20 }, (_, index) => {
-              const ingredient = recipe[`strIngredient${index + 1}`];
-              const measure = recipe[`strMeasure${index + 1}`];
-              return ingredient ? (
-                <li key={index} className="mb-2">
-                  {`${ingredient} - ${measure}`}
-                </li>
-              ) : null;
-            })}
-          </ul>
-        </div>
+      {/* Ingredients */}
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">Ingredients</h2>
+        <ul className="list-disc pl-5">
+          {ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
+        </ul>
       </div>
 
-      {/* Recipe Instructions */}
-      <h2 className="text-2xl mt-8 mb-4">Instructions</h2>
-      <p>{recipe.strInstructions}</p>
+      {/* Instructions */}
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">Instructions</h2>
+        <p>{recipe.strInstructions}</p>
+      </div>
 
       {/* YouTube Video */}
       {recipe.strYoutube && (
@@ -111,9 +119,9 @@ const RecipeDetails = () => {
       <Link to="/home" className="mt-8 inline-block text-[#21412F] underline">
         Back to Home
       </Link>
-       <Footer />
+
+      <Footer />
     </div>
-   
   );
 };
 
