@@ -40,11 +40,11 @@ const Home = () => {
       if (!data.meals) {
         throw new Error(term ? `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!` : "No default recipes found");
       }
-      setRecipes(data.meals); // If no error Shows recipes
+      setRecipes(data.meals); 
     } catch (error) {
-      setError(error.message); // Set error message in state
+      setError(error.message); 
     } finally {
-      setLoading(false); // Set loading to false after fetching
+      setLoading(false); 
     }
   };
 
@@ -82,7 +82,7 @@ const Home = () => {
       </h1>
 
       {/* Greeting message */}
-      <h2 className="mb-2 text-lg px-4">{getGreeting()}!</h2>
+      <h2 className="mb-2 text-lg px-4">{getGreeting()}! What are you cooking today?</h2>
 
       {/* Loading and Error Handling */}
       {loading ? (
