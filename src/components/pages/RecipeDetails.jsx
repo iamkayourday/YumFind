@@ -83,8 +83,12 @@ const RecipeDetails = () => {
       {/* Instructions */}
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-        <p>{recipe.strInstructions}</p>
-      </div>
+        {recipe.strInstructions.split('.').filter(Boolean).map((step, index) => (
+          <p key={index}>{index + 1}. {step.trim()}</p>
+        ))}
+    </div>
+
+
 
       {/* YouTube Video */}
       {recipe.strYoutube && (
