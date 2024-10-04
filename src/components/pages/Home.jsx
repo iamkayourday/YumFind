@@ -102,7 +102,7 @@ const Home = () => {
         <p className="text-center text-xl text-red-600 h-screen">{error}</p>
       ) : (
         // Recipe list
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 px-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 px-2 ">
           {recipes.map((recipe) => (
             <div key={recipe.idMeal} className="rounded-lg shadow-md border-solid border-[#21412F] border-2">
               <img
