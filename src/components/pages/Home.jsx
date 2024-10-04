@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const Home = () => {
   // State variables
@@ -66,6 +67,8 @@ const Home = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="container mx-auto py-8">
       <h1 className="text-center text-[#21412F] text-4xl font-bold mb-6">
         Finding time to cook can be hard. Finding a recipe shouldn’t be.
@@ -78,11 +81,11 @@ const Home = () => {
 
       {/* Welcome message */}
       <h1 className="text-2xl px-4">
-        Welcome, <span className="text-[#21412F] font-bold">{username}</span>
+      {getGreeting()}, <span className="text-[#21412F] font-bold">{username}!</span>
       </h1>
 
       {/* Greeting message */}
-      <h2 className="mb-2 text-lg px-4">{getGreeting()}! What are you cooking today?</h2>
+      <h2 className="mb-2  px-4 text-xl"> What are you cooking today?</h2>
 
       {/* Loading and Error Handling */}
       {loading ? (
@@ -99,15 +102,15 @@ const Home = () => {
         <p className="text-center text-xl text-red-600 h-screen">{error}</p>
       ) : (
         // Recipe list
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 px-4 ">
           {recipes.map((recipe) => (
-            <div key={recipe.idMeal} className="rounded-lg shadow-md">
+            <div key={recipe.idMeal} className="rounded-lg shadow-md border-solid border-[#21412F] border-2">
               <img
                 src={recipe.strMealThumb}
                 alt={recipe.strMeal}
-                className="w-full h-48 object-cover mt-4"
+                className="w-full h-48 object-cover rounded-lg"
               />
-              <div className="p-4 bg-[#D9D9D9]">
+              <div className="p-4 bg-[#D9D9D9] rounded-lg">
                 <Link to={`/recipe/${recipe.idMeal}`}>
                   <h2 className="text-xl text-[#21412F] font-semibold mb-2">
                     {recipe.strMeal}
@@ -122,8 +125,9 @@ const Home = () => {
           ))}
         </div>
       )}
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 };
 

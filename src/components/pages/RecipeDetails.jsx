@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -59,6 +60,8 @@ const RecipeDetails = () => {
   }
 
   return (
+    <>
+    <Header />
     <div className="min-h-screen text-[#21412F] px-4 py-6">
       {/* Recipe Title */}
       <h1 className="text-4xl font-bold text-center mb-6">{recipe.strMeal}</h1>
@@ -88,8 +91,6 @@ const RecipeDetails = () => {
         ))}
     </div>
 
-
-
       {/* YouTube Video */}
       {recipe.strYoutube && (
         <div className="mt-8">
@@ -111,7 +112,7 @@ const RecipeDetails = () => {
       <div className="mt-8">
         <a
           href={recipe.strSource}
-          className="text-[#21412F] underline"
+          className="text-[#21412F] underline "
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -123,9 +124,9 @@ const RecipeDetails = () => {
       <Link to="/home" className="mt-8 inline-block text-[#21412F] underline">
         Back to Home
       </Link>
-
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 };
 
