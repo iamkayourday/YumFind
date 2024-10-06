@@ -30,7 +30,7 @@ const Mode = () => {
 
   return (
     <button onClick={toggleMode} className="p-2">
-      {isDarkMode ? <FaSun className="text-gray-200" /> : <FaMoon className="text-gray-900" />}
+      {isDarkMode ? <FaSun className="text-[#e5e7eb]" /> : <FaMoon className="text-[#1e1e1f]" />}
     </button>
   );
 };
