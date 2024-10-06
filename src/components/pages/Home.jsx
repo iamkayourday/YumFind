@@ -4,34 +4,35 @@ import { Link } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 import Header from "./Header";
-import { FaRegBookmark, FaBookmark } from 'react-icons/fa'; // Importing React Icons
+import { FaRegBookmark, FaBookmark } from "react-icons/fa"; // Importing React Icons
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const Home = () => {
   // State variables
-  const [recipes, setRecipes] = useState([]); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
-  const [username, setUsername] = useState(""); 
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [username, setUsername] = useState("");
   const [favorites, setFavorites] = useState([]); // State for favorites
 
   // Fetch recipes and retrieve stored username and favorites when the component loads
   useEffect(() => {
-    fetchRecipes(); 
-    const storedUsername = localStorage.getItem("username"); 
-    const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]"); // Load favorites from local storage
+    fetchRecipes();
+    const storedUsername = localStorage.getItem("username");
+    const storedFavorites = JSON.parse(
+      localStorage.getItem("favorites") || "[]"
+    ); // Load favorites from local storage
     if (storedUsername) {
-      setUsername(storedUsername); 
+      setUsername(storedUsername);
     }
     setFavorites(storedFavorites); // Initialize favorites state
   }, []);
 
   // Fetch recipes from the API
   const fetchRecipes = async (term = "") => {
-    setLoading(true); 
-    setError(null); 
+    setLoading(true);
+    setError(null);
     try {
       let response;
       // Fetch recipes based on the search term or fetch all if no term is provided
@@ -40,19 +41,25 @@ const Home = () => {
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
         );
       } else {
-        response = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=");
+        response = await fetch(
+          "https://www.themealdb.com/api/json/v1/1/search.php?s="
+        );
       }
 
-      const data = await response.json(); 
+      const data = await response.json();
       // Check if meals were returned and throw an error if not
       if (!data.meals) {
-        throw new Error(term ? `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!` : "No default recipes found");
+        throw new Error(
+          term
+            ? `Oops, no recipe for "${term}" found. Check your spelling or find another recipe!`
+            : "No default recipes found"
+        );
       }
-      setRecipes(data.meals); 
+      setRecipes(data.meals);
     } catch (error) {
-      setError(error.message); 
+      setError(error.message);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -70,23 +77,23 @@ const Home = () => {
 
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Sync with local storage
-    
+
     // Show toast message
-    const toastMessage = isFavorite 
-      ? `${recipe.strMeal} removed from favorites` 
+    const toastMessage = isFavorite
+      ? `${recipe.strMeal} removed from favorites`
       : `${recipe.strMeal} added to favorites`;
     toast.success(toastMessage); // Display the toast notification
   };
 
   // Generate greeting message based on the current time
   const getGreeting = () => {
-    const currentHour = new Date().getHours(); 
+    const currentHour = new Date().getHours();
     if (currentHour < 12) {
-      return "Good Morning"; 
+      return "Good Morning";
     } else if (currentHour < 18) {
-      return "Good Afternoon"; 
+      return "Good Afternoon";
     } else {
-      return "Good Evening"; 
+      return "Good Evening";
     }
   };
 
@@ -100,7 +107,7 @@ const Home = () => {
 
         {/* Search Bar */}
         <div className="mb-6">
-          <SearchBar onSearch={handleSearch} /> 
+          <SearchBar onSearch={handleSearch} />
         </div>
 
         {/* Welcome message */}
@@ -109,7 +116,10 @@ const Home = () => {
         </h1>
 
         {/* Greeting message */}
-        <h2 className="mb-2 px-4 text-xl text-[#1e1e1f] dark:text-[#e5e7eb]"> What are you cooking today?</h2>
+        <h2 className="mb-2 px-4 text-xl text-[#1e1e1f] dark:text-[#e5e7eb]">
+          {" "}
+          What are you cooking today?
+        </h2>
 
         {/* Loading and Error Handling */}
         {loading ? (
@@ -128,7 +138,10 @@ const Home = () => {
           // Recipe list
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2">
             {recipes.map((recipe) => (
-              <div key={recipe.idMeal} className="relative rounded-lg shadow-md border-solid border-[#1e1e1f] dark:border-[#e5e7eb] border-2">
+              <div
+                key={recipe.idMeal}
+                className="relative rounded-lg shadow-md border-solid border-[#1e1e1f] dark:border-[#e5e7eb] border-2"
+              >
                 <img
                   src={recipe.strMealThumb}
                   alt={recipe.strMeal}
@@ -140,8 +153,12 @@ const Home = () => {
                       {recipe.strMeal}
                     </h2>
                   </Link>
-                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">Category: {recipe.strCategory}</p>
-                  <p className="text-gray-700 dark:text-[#e5e7eb]">Region: {recipe.strArea}</p>
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
+                    Category: {recipe.strCategory}
+                  </p>
+                  <p className="text-gray-700 dark:text-[#e5e7eb]">
+                    Region: {recipe.strArea}
+                  </p>
                 </div>
                 {/* Bookmark Icon positioned at the bottom left */}
                 <span

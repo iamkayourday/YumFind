@@ -61,71 +61,81 @@ const RecipeDetails = () => {
 
   return (
     <>
-    <Header />
-    <div className="min-h-screen text-[#1e1e1f] dark:text-[#e5e7eb] px-4 py-6">
-      {/* Recipe Title */}
-      <h1 className="text-4xl font-bold text-center mb-6">{recipe.strMeal}</h1>
+      <Header />
+      <div className="min-h-screen text-[#1e1e1f] dark:text-[#e5e7eb] px-4 py-6">
+        {/* Recipe Title */}
+        <h1 className="text-4xl font-bold text-center mb-6">
+          {recipe.strMeal}
+        </h1>
 
-      {/* Recipe Image */}
-      <img
-        src={recipe.strMealThumb}
-        alt={recipe.strMeal}
-        className="w-full h-64 rounded-md block object-cover"
-      />
+        {/* Recipe Image */}
+        <img
+          src={recipe.strMealThumb}
+          alt={recipe.strMeal}
+          className="w-full h-64 rounded-md block object-cover"
+        />
 
-      {/* Ingredients */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Ingredients</h2>
-        <ul className="list-disc pl-5">
-          {ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Instructions */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-        {recipe.strInstructions.split('.').filter(Boolean).map((step, index) => (
-          <p key={index}>{index + 1}. {step.trim()}</p>
-        ))}
-    </div>
-
-      {/* YouTube Video */}
-      {recipe.strYoutube && (
+        {/* Ingredients */}
         <div className="mt-8">
-          <h2 className="text-2xl mb-4 font-bold">Watch Video</h2>
-          <iframe
-            className="w-full h-[30rem]"
-            src={`https://www.youtube.com/embed/${
-              recipe.strYoutube.split("v=")[1]
-            }`}
-            title={recipe.strMeal}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <h2 className="text-2xl font-bold mb-4">Ingredients</h2>
+          <ul className="list-disc pl-5">
+            {ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
         </div>
-      )}
 
-      {/* Recipe Full Detail */}
-      <div className="mt-8">
-        <a
-          href={recipe.strSource}
-          className="text-[#1e1e1f] dark:text-[#e5e7eb] underline "
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Instructions */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
+          {recipe.strInstructions
+            .split(".")
+            .filter(Boolean)
+            .map((step, index) => (
+              <p key={index}>
+                {index + 1}. {step.trim()}
+              </p>
+            ))}
+        </div>
+
+        {/* YouTube Video */}
+        {recipe.strYoutube && (
+          <div className="mt-8">
+            <h2 className="text-2xl mb-4 font-bold">Watch Video</h2>
+            <iframe
+              className="w-full h-[30rem]"
+              src={`https://www.youtube.com/embed/${
+                recipe.strYoutube.split("v=")[1]
+              }`}
+              title={recipe.strMeal}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+
+        {/* Recipe Full Detail */}
+        <div className="mt-8">
+          <a
+            href={recipe.strSource}
+            className="text-[#1e1e1f] dark:text-[#e5e7eb] underline "
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check Full Recipe
+          </a>
+        </div>
+
+        {/* Back to Home Link */}
+        <Link
+          to="/home"
+          className="mt-8 inline-block text-[#1e1e1f] dark:text-[#e5e7eb] underline"
         >
-          Check Full Recipe
-        </a>
+          Back to Home
+        </Link>
       </div>
-
-      {/* Back to Home Link */}
-      <Link to="/home" className="mt-8 inline-block text-[#1e1e1f] dark:text-[#e5e7eb] underline">
-        Back to Home
-      </Link>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };

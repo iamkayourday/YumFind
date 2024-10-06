@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa'; 
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ onSearch }) => {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (term) {
-      onSearch(term); 
-      setTerm('');
+      onSearch(term);
+      setTerm("");
     }
   };
 
@@ -24,7 +24,10 @@ const SearchBar = ({ onSearch }) => {
         />
         <FaSearch className="absolute left-3 top-2/4 transform -translate-y-1/2 text-gray-400" />
       </div>
-      <button type="submit" className="ml-4 p-2 bg-[#1e1e1f] dark:bg-[#e5e7eb] text-white dark:text-[#1e1e1f] rounded-lg">
+      <button
+        type="submit"
+        className="ml-4 p-2 bg-[#1e1e1f] dark:bg-[#e5e7eb] text-white dark:text-[#1e1e1f] rounded-lg"
+      >
         Search
       </button>
     </form>

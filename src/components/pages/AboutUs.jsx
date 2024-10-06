@@ -1,6 +1,6 @@
-import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const AboutUs = () => {
   return (
@@ -11,7 +11,7 @@ const AboutUs = () => {
         <h1 className="text-4xl font-bold text-center text-[#21412F] mb-8 dark:text-white">
           About <span className="text-[#21412F]">YumFind</span>
         </h1>
-        
+
         {/* Intro Section */}
         <p className="dark:text-white text-lg leading-relaxed text-gray-700 mb-8 text-center max-w-3xl mx-auto">
           YumFind is a revolutionary recipe discovery platform designed to
@@ -21,38 +21,56 @@ const AboutUs = () => {
         </p>
 
         {/* Mission Section */}
-        <h2 className="text-3xl font-bold text-[#21412F] mb-4 text-center">Our Mission</h2>
+        <h2 className="text-3xl font-bold text-[#21412F] mb-4 text-center">
+          Our Mission
+        </h2>
         <p className="dark:text-[#e5e7eb] text-lg text-[#1e1e1f] mb-6 text-center max-w-2xl mx-auto">
           We aim to make cooking more enjoyable and accessible through
-          easy-to-follow recipes, user-friendly search, and a curated selection of meals.
+          easy-to-follow recipes, user-friendly search, and a curated selection
+          of meals.
         </p>
 
         {/* Steps Section */}
-        <h3 className="text-2xl font-semibold text-[#21412F] mb-4">How It Works</h3>
+        <h3 className="text-2xl font-semibold text-[#21412F] mb-4">
+          How It Works
+        </h3>
         <ol className="list-decimal list-inside space-y-3 text-[#1e1e1f] dark:text-[#e5e7eb]">
           <li>
-            <span className="font-bold text-[#21412F]">Sign In:</span> Access our vast recipe library by signing in with your credentials.
+            <span className="font-bold text-[#21412F]">Sign In:</span> Access
+            our vast recipe library by signing in with your credentials.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Explore Recipes:</span> Discover 25 curated default recipes, carefully selected for your culinary delight.
+            <span className="font-bold text-[#21412F]">Explore Recipes:</span>{" "}
+            Discover 25 curated default recipes, carefully selected for your
+            culinary delight.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Search:</span> Type your desired recipe name, ingredient, or cuisine in the search bar to find what you need.
+            <span className="font-bold text-[#21412F]">Search:</span> Type your
+            desired recipe name, ingredient, or cuisine in the search bar to
+            find what you need.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Browse:</span> Explore relevant recipe matches from our extensive API-powered database.
+            <span className="font-bold text-[#21412F]">Browse:</span> Explore
+            relevant recipe matches from our extensive API-powered database.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Details:</span> View ingredients, instructions, cooking time, and nutritional information for each recipe.
+            <span className="font-bold text-[#21412F]">Details:</span> View
+            ingredients, instructions, cooking time, and nutritional information
+            for each recipe.
           </li>
         </ol>
 
         {/* Getting Started Section */}
-        <h3 className="text-2xl font-semibold text-[#21412F] mb-4 mt-8">Getting Started</h3>
+        <h3 className="text-2xl font-semibold text-[#21412F] mb-4 mt-8">
+          Getting Started
+        </h3>
         <ul className="list-disc list-inside space-y-2 text-[#1e1e1f] dark:text-[#e5e7eb]">
           <li>Browse the default recipes on the home page.</li>
           <li>Use the search bar to find specific recipes by name</li>
-          <li>Click on a recipe to view the details, including ingredients and cooking instructions.</li>
+          <li>
+            Click on a recipe to view the details, including ingredients and
+            cooking instructions.
+          </li>
         </ul>
       </div>
       <Footer />
