@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 import Header from "./Header";
+import { FaRegBookmark, FaBookmark } from 'react-icons/fa'; // Importing React Icons
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Home = () => {
   // State variables
@@ -11,14 +15,17 @@ const Home = () => {
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null); 
   const [username, setUsername] = useState(""); 
+  const [favorites, setFavorites] = useState([]); // State for favorites
 
-  // Fetch recipes and retrieve stored username when the component loads
+  // Fetch recipes and retrieve stored username and favorites when the component loads
   useEffect(() => {
     fetchRecipes(); 
     const storedUsername = localStorage.getItem("username"); 
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]"); // Load favorites from local storage
     if (storedUsername) {
       setUsername(storedUsername); 
     }
+    setFavorites(storedFavorites); // Initialize favorites state
   }, []);
 
   // Fetch recipes from the API
@@ -54,6 +61,23 @@ const Home = () => {
     fetchRecipes(term); // Triggers the fetch with the provided search term
   };
 
+  // Toggle favorite status
+  const toggleFavorite = (recipe) => {
+    const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
+    const updatedFavorites = isFavorite
+      ? favorites.filter((fav) => fav.idMeal !== recipe.idMeal) // Remove from favorites
+      : [...favorites, recipe]; // Add to favorites
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Sync with local storage
+    
+    // Show toast message
+    const toastMessage = isFavorite 
+      ? `${recipe.strMeal} removed from favorites` 
+      : `${recipe.strMeal} added to favorites`;
+    toast.success(toastMessage); // Display the toast notification
+  };
+
   // Generate greeting message based on the current time
   const getGreeting = () => {
     const currentHour = new Date().getHours(); 
@@ -68,65 +92,74 @@ const Home = () => {
 
   return (
     <>
-    <Header />
-    <div className="container mx-auto py-8">
-      <h1 className="text-center text-[#21412F] text-4xl font-bold mb-6">
-        Finding time to cook can be hard. Finding a recipe shouldn’t be.
-      </h1>
+      <Header />
+      <div className="container mx-auto py-8">
+        <h1 className="text-center text-[#1e1e1f] dark:text-[#e5e7eb] text-4xl font-bold mb-6">
+          Finding time to cook can be hard. Finding a recipe shouldn’t be.
+        </h1>
 
-      {/* Search Bar */}
-      <div className="mb-6">
-        <SearchBar onSearch={handleSearch} /> 
-      </div>
-
-      {/* Welcome message */}
-      <h1 className="text-2xl px-4">
-      {getGreeting()}, <span className="text-[#21412F] font-bold">{username}!</span>
-      </h1>
-
-      {/* Greeting message */}
-      <h2 className="mb-2  px-4 text-xl"> What are you cooking today?</h2>
-
-      {/* Loading and Error Handling */}
-      {loading ? (
-        <div className="text-center text-xl h-screen">
-          <PropagateLoader
-            color="#21412F"
-            loading={loading}
-            size="20px"
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+        {/* Search Bar */}
+        <div className="mb-6">
+          <SearchBar onSearch={handleSearch} /> 
         </div>
-      ) : error ? (
-        <p className="text-center text-xl text-red-600 h-screen">{error}</p>
-      ) : (
-        // Recipe list
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 ">
-          {recipes.map((recipe) => (
-            <div key={recipe.idMeal} className="rounded-lg shadow-md border-solid border-[#21412F] border-2">
-              <img
-                src={recipe.strMealThumb}
-                alt={recipe.strMeal}
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <div className="p-4 bg-[#D9D9D9] rounded-lg">
-                <Link to={`/recipe/${recipe.idMeal}`}>
-                  <h2 className="text-xl text-[#21412F] font-semibold mb-2">
-                    {recipe.strMeal}
-                  </h2>
-                </Link>
-                <p className="text-gray-700">
-                  Category: {recipe.strCategory} 
-                </p>
-                <p className="text-gray-700">Region: {recipe.strArea}</p>
+
+        {/* Welcome message */}
+        <h1 className="text-2xl px-4 text-[#1e1e1f] dark:text-[#e5e7eb]">
+          {getGreeting()}, <span className=" font-bold">{username}!</span>
+        </h1>
+
+        {/* Greeting message */}
+        <h2 className="mb-2 px-4 text-xl text-[#1e1e1f] dark:text-[#e5e7eb]"> What are you cooking today?</h2>
+
+        {/* Loading and Error Handling */}
+        {loading ? (
+          <div className="text-center text-xl h-screen">
+            <PropagateLoader
+              color="#808080"
+              loading={loading}
+              size="20px"
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
+        ) : error ? (
+          <p className="text-center text-xl text-red-600 h-screen">{error}</p>
+        ) : (
+          // Recipe list
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2">
+            {recipes.map((recipe) => (
+              <div key={recipe.idMeal} className="relative rounded-lg shadow-md border-solid border-[#1e1e1f] dark:border-[#e5e7eb] border-2">
+                <img
+                  src={recipe.strMealThumb}
+                  alt={recipe.strMeal}
+                  className="w-full h-48 object-cover rounded-lg"
+                />
+                <div className="p-4 bg-[#eee] dark:bg-[#1e1e1f] rounded-lg">
+                  <Link to={`/recipe/${recipe.idMeal}`}>
+                    <h2 className="text-xl text-[#1e1e1f] dark:text-[#e5e7eb] font-semibold mb-2">
+                      {recipe.strMeal}
+                    </h2>
+                  </Link>
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">Category: {recipe.strCategory}</p>
+                  <p className="text-gray-700 dark:text-[#e5e7eb]">Region: {recipe.strArea}</p>
+                </div>
+                {/* Bookmark Icon positioned at the bottom left */}
+                <span
+                  onClick={() => toggleFavorite(recipe)}
+                  className="absolute bottom-4 right-4 cursor-pointer text-2xl"
+                >
+                  {favorites.some((fav) => fav.idMeal === recipe.idMeal) ? (
+                    <FaBookmark className="text-red-600" />
+                  ) : (
+                    <FaRegBookmark className="text-[#1e1e1f] dark:text-[#e5e7eb]" />
+                  )}
+                </span>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-    <Footer />
+            ))}
+          </div>
+        )}
+      </div>
+      <Footer />
     </>
   );
 };

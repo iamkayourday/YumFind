@@ -62,7 +62,7 @@ const RecipeDetails = () => {
   return (
     <>
     <Header />
-    <div className="min-h-screen text-[#21412F] px-4 py-6">
+    <div className="min-h-screen text-[#1e1e1f] dark:text-[#e5e7eb] px-4 py-6">
       {/* Recipe Title */}
       <h1 className="text-4xl font-bold text-center mb-6">{recipe.strMeal}</h1>
 
@@ -112,7 +112,7 @@ const RecipeDetails = () => {
       <div className="mt-8">
         <a
           href={recipe.strSource}
-          className="text-[#21412F] underline "
+          className="text-[#1e1e1f] dark:text-[#e5e7eb] underline "
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -121,7 +121,7 @@ const RecipeDetails = () => {
       </div>
 
       {/* Back to Home Link */}
-      <Link to="/home" className="mt-8 inline-block text-[#21412F] underline">
+      <Link to="/home" className="mt-8 inline-block text-[#1e1e1f] dark:text-[#e5e7eb] underline">
         Back to Home
       </Link>
     </div>
