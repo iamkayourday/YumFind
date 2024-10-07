@@ -24,7 +24,7 @@ const Favorites = () => {
 
         {/* Favorite Recipes List */}
         {favorites.length === 0 ? (
-          <p className="text-center text-xl h-screen">
+          <p className="text-center text-xl h-screen text-[#1e1e1f] dark:text-[#e5e7eb] ">
             You have no favorite recipes yet.
           </p>
         ) : (

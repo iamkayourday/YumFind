@@ -6,7 +6,7 @@ const LogOut = () => {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    // Remove the username or user data from localStorage
+    // Remove the username and mode from localStorage
     localStorage.removeItem("username"); 
     localStorage.removeItem("dark-mode"); 
 
@@ -21,7 +21,7 @@ const LogOut = () => {
         variant="bordered" 
         startContent={<UserIcon />} 
         className="border-[#ff4d4f] text-[#ff4d4f] dark:border-white dark:text-white hover:bg-[#ff4d4f] hover:text-white dark:hover:bg-white dark:hover:text-[#ff4d4f] transition-all duration-300 ease-in-out"
-        onClick={handleLogOut} // Add the click handler
+        onClick={handleLogOut} 
       >
         Log Out
       </Button>

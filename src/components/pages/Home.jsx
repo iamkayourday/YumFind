@@ -157,7 +157,7 @@ const Home = () => {
                   <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
                     Category: {recipe.strCategory}
                   </p>
-                  <p className="text-gray-700 dark:text-[#e5e7eb]">
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
                     Region: {recipe.strArea}
                   </p>
                 </div>

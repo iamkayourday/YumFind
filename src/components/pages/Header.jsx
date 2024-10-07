@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Mode from "../Utils/Mode"
 import logo from "../../assets/logo.svg"
+import LogOut from "../Auth/LogOut";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,6 +84,15 @@ const Header = () => {
           <li className="p-2">
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
+              to="/favorites"
+              onClick={toggleMenu} 
+            >
+              Favorites
+            </Link>
+          </li>
+          <li className="p-2">
+            <Link
+              className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/aboutUs"
               onClick={toggleMenu} 
             >
@@ -92,13 +102,14 @@ const Header = () => {
           <li className="p-2">
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
-              to="/favorites"
+              to="/faqs"
               onClick={toggleMenu} 
             >
-              Favorites
+              FAQs
             </Link>
           </li>
         </ul>
+        <LogOut />
       </div>
     </div>
   );
