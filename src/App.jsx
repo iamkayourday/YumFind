@@ -9,10 +9,12 @@ import Home from './components/pages/Home';
 import RecipeDetails from './components/pages/RecipeDetails';
 import AboutUs from './components/pages/AboutUs';
 import Favorites from './components/pages/Favorites';
+import { ChakraBaseProvider } from '@chakra-ui/react';
 // import Mode from './components/Utils/Mode'
 
 function App() {
   return (
+    <ChakraBaseProvider>
     <Router>
       <div className='dark:bg-[#1e1e1f]'>         
         <Routes>
@@ -27,6 +29,7 @@ function App() {
       </div>
       <ToastContainer />
     </Router>
+    </ChakraBaseProvider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTwitter, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Tooltip } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
@@ -16,16 +17,13 @@ const Footer = () => {
           </div>
 
           <div className="flex space-x-4 cursor-pointer">
-            <a target="_blank" rel="noopener noreferrer">
+            <a target="_blank" href="https://github.com/iamkayourday" rel="noopener noreferrer">
               <FaGithub className="text-lg hover:text-gray-400" />
             </a>
-            <a target="_blank" rel="noopener noreferrer">
+            <a target="_blank" href=" https://x.com/Abdulbasit54344" rel="noopener noreferrer">
               <FaTwitter className="text-lg hover:text-gray-400" />
             </a>
-            <a target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-lg hover:text-gray-400" />
-            </a>
-            <a target="_blank" rel="noopener noreferrer">
+            <a target="_blank" href="https://www.linkedin.com/in/abdulbasitimam" rel="noopener noreferrer">
               <FaLinkedin className="text-lg hover:text-gray-400" />
             </a>
           </div>

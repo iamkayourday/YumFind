@@ -18,7 +18,7 @@ const Favorites = () => {
     <>
       <Header className="h-screen" />
       <div className="container mx-auto py-8">
-        <h1 className="text-center text-[#21412F] text-4xl font-bold mb-6">
+        <h1 className="text-center text-[#1e1e1f] dark:text-[#e5e7eb] text-4xl font-bold mb-6">
           Your Favorite Recipes
         </h1>
 
@@ -32,23 +32,23 @@ const Favorites = () => {
             {favorites.map((recipe) => (
               <div
                 key={recipe.idMeal}
-                className="rounded-lg shadow-md border-solid border-[#21412F] border-2"
+                className="rounded-lg shadow-md border-solid border-[#1e1e1f] dark:border-[#e5e7eb] border-2"
               >
                 <img
                   src={recipe.strMealThumb}
                   alt={recipe.strMeal}
                   className="w-full h-48 object-cover rounded-lg"
                 />
-                <div className="p-4 bg-[#D9D9D9] rounded-lg">
+                <div className="p-4 bg-[#eee] dark:bg-[#1e1e1f] rounded-lg">
                   <Link to={`/recipe/${recipe.idMeal}`}>
-                    <h2 className="text-xl text-[#21412F] font-semibold mb-2">
+                    <h2 className="text-xl text-[#1e1e1f] dark:text-[#e5e7eb] font-semibold mb-2">
                       {recipe.strMeal}
                     </h2>
                   </Link>
-                  <p className="text-gray-700">
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
                     Category: {recipe.strCategory}
                   </p>
-                  <p className="text-gray-700">Region: {recipe.strArea}</p>
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">Region: {recipe.strArea}</p>
                 </div>
               </div>
             ))}

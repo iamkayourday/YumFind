@@ -8,8 +8,8 @@ const AboutUs = () => {
       <Header className="h-screen" />
       <div className=" container mx-auto py-12 px-4 md:px-8">
         {/* Main Heading */}
-        <h1 className="text-4xl font-bold text-center text-[#21412F] mb-8 dark:text-white">
-          About <span className="text-[#21412F]">YumFind</span>
+        <h1 className="text-4xl font-bold text-center text-[#1e1e1f] mb-8 dark:text-white">
+          About <span className="text-[#1e1e1f]">YumFind</span>
         </h1>
 
         {/* Intro Section */}
@@ -21,7 +21,7 @@ const AboutUs = () => {
         </p>
 
         {/* Mission Section */}
-        <h2 className="text-3xl font-bold text-[#21412F] mb-4 text-center">
+        <h2 className="text-3xl font-bold text-[#1e1e1f] mb-4 text-center">
           Our Mission
         </h2>
         <p className="dark:text-[#e5e7eb] text-lg text-[#1e1e1f] mb-6 text-center max-w-2xl mx-auto">
@@ -31,37 +31,48 @@ const AboutUs = () => {
         </p>
 
         {/* Steps Section */}
-        <h3 className="text-2xl font-semibold text-[#21412F] mb-4">
+        <h3 className="text-2xl font-semibold text-[#1e1e1f] mb-4 dark:text-[#e5e7eb]">
           How It Works
         </h3>
         <ol className="list-decimal list-inside space-y-3 text-[#1e1e1f] dark:text-[#e5e7eb]">
           <li>
-            <span className="font-bold text-[#21412F]">Sign In:</span> Access
-            our vast recipe library by signing in with your credentials.
+            <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
+              Sign In:
+            </span>{" "}
+            Access our vast recipe library by signing in with your credentials.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Explore Recipes:</span>{" "}
+            <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
+              Explore Recipes:
+            </span>{" "}
             Discover 25 curated default recipes, carefully selected for your
             culinary delight.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Search:</span> Type your
-            desired recipe name, ingredient, or cuisine in the search bar to
-            find what you need.
+            <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
+              Search:
+            </span>{" "}
+            Type your desired recipe name, ingredient, or cuisine in the search
+            bar to find what you need.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Browse:</span> Explore
-            relevant recipe matches from our extensive API-powered database.
+            <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
+              Browse:
+            </span>{" "}
+            Explore relevant recipe matches from our extensive API-powered
+            database.
           </li>
           <li>
-            <span className="font-bold text-[#21412F]">Details:</span> View
-            ingredients, instructions, cooking time, and nutritional information
-            for each recipe.
+            <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
+              Details:
+            </span>{" "}
+            View ingredients, instructions, cooking time, and nutritional
+            information for each recipe.
           </li>
         </ol>
 
         {/* Getting Started Section */}
-        <h3 className="text-2xl font-semibold text-[#21412F] mb-4 mt-8">
+        <h3 className="text-2xl font-semibold text-[#1e1e1f] mb-4 mt-8">
           Getting Started
         </h3>
         <ul className="list-disc list-inside space-y-2 text-[#1e1e1f] dark:text-[#e5e7eb]">

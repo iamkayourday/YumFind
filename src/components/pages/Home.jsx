@@ -16,7 +16,7 @@ const Home = () => {
   const [username, setUsername] = useState("");
   const [favorites, setFavorites] = useState([]); // State for favorites
 
-  // Fetch recipes and retrieve stored username and favorites when the component loads
+  // Fetch recipes and retrieve stored username and favorites when the page loads
   useEffect(() => {
     fetchRecipes();
     const storedUsername = localStorage.getItem("username");
@@ -29,17 +29,18 @@ const Home = () => {
     setFavorites(storedFavorites); // Initialize favorites state
   }, []);
 
-  // Fetch recipes from the API
+  // Fetch recipes for search and default recipes from the API
   const fetchRecipes = async (term = "") => {
     setLoading(true);
     setError(null);
     try {
       let response;
-      // Fetch recipes based on the search term or fetch all if no term is provided
+      // Fetch recipes based on the search term
       if (term) {
         response = await fetch(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
         );
+        //  Fetch default recipe if term is not provided
       } else {
         response = await fetch(
           "https://www.themealdb.com/api/json/v1/1/search.php?s="
@@ -47,7 +48,7 @@ const Home = () => {
       }
 
       const data = await response.json();
-      // Check if meals were returned and throw an error if not
+      // Checks if meals were returned and throw an error if not
       if (!data.meals) {
         throw new Error(
           term
@@ -65,15 +66,15 @@ const Home = () => {
 
   // Handle search term and fetch recipe when the search button is clicked
   const handleSearch = (term) => {
-    fetchRecipes(term); // Triggers the fetch with the provided search term
+    fetchRecipes(term); // Fetch the provided search term
   };
 
   // Toggle favorite status
   const toggleFavorite = (recipe) => {
     const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
     const updatedFavorites = isFavorite
-      ? favorites.filter((fav) => fav.idMeal !== recipe.idMeal) // Remove from favorites
-      : [...favorites, recipe]; // Add to favorites
+      ? favorites.filter((fav) => fav.idMeal !== recipe.idMeal) // Remove the recipe from favorite from favorites
+      : [...favorites, recipe]; // Add the recipe to to favorites
 
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Sync with local storage
@@ -160,7 +161,6 @@ const Home = () => {
                     Region: {recipe.strArea}
                   </p>
                 </div>
-                {/* Bookmark Icon positioned at the bottom left */}
                 <span
                   onClick={() => toggleFavorite(recipe)}
                   className="absolute bottom-4 right-4 cursor-pointer text-2xl"

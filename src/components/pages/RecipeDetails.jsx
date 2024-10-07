@@ -5,6 +5,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 import Header from "./Header";
 
+// State Variables
 const RecipeDetails = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -22,7 +23,7 @@ const RecipeDetails = () => {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Error fetching recipe details!");
       }
       const data = await response.json();
       setRecipe(data.meals[0]);
@@ -46,11 +47,11 @@ const RecipeDetails = () => {
       }
     }
   }
-
+  // Loading state
   if (loading) {
     return (
       <div className="text-center text-xl h-screen">
-        <PropagateLoader color="#21412F" loading={loading} size={20} />
+        <PropagateLoader color="#808080" loading={loading} size={20} />
       </div>
     );
   }

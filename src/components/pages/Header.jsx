@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa"; // Icons for menu toggle
-import Mode from "../Utils/Mode";
+import { FaBars, FaTimes } from "react-icons/fa";
+import Mode from "../Utils/Mode"
+import logo from "../../assets/logo.svg"
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,18 +14,17 @@ const Header = () => {
   // Disable scrolling when the menu is open
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
+      document.body.style.overflow = "hidden"; 
     } else {
-      document.body.style.overflow = "auto"; // Enable scrolling
+      document.body.style.overflow = "auto"; 
     }
     return () => {
-      document.body.style.overflow = "auto"; // Clean up when component unmounts
+      document.body.style.overflow = "auto"; 
     };
   }, [menuOpen]);
 
   return (
     <div className="dark:bg-[#1e1e1f] dark:border-b dark:border-gray-200 w-full h-14 bg-[#e5e7eb] border-b-2 border-[#1e1e1f] sticky top-0 z-20 flex items-center justify-between px-4">
-      {/* Hamburger Menu Icon (visible on all devices) */}
       <div>
         <button
           onClick={toggleMenu}
@@ -34,17 +34,23 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Logo in the center */}
-      <div className="flex-grow flex justify-center">
+      {/* Logo */}
+      <div className="flex-grow flex justify-center items-center">
         <Link
-          className="text-[#1e1e1f] dark:text-[#e5e7eb] text-2xl font-bold"
+          className="text-[#1e1e1f] dark:text-[#e5e7eb] text-2xl font-bold flex items-center"
           to="/home"
         >
+          {/* Add the logo image */}
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-8 w-8 mr-2 text-[#43438d]  dark:text-[#e5e7eb]"
+          />
           YumFind
         </Link>
       </div>
 
-      {/* Dark Mode Toggle on the right */}
+      {/* Mode Toggle */}
       <div className="flex">
         <Mode />
       </div>
@@ -69,7 +75,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/home"
-              onClick={toggleMenu} // Close menu on click
+              onClick={toggleMenu} 
             >
               Home
             </Link>
@@ -78,7 +84,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/aboutUs"
-              onClick={toggleMenu} // Close menu on click
+              onClick={toggleMenu} 
             >
               About Us
             </Link>
@@ -87,7 +93,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/favorites"
-              onClick={toggleMenu} // Close menu on click
+              onClick={toggleMenu} 
             >
               Favorites
             </Link>
