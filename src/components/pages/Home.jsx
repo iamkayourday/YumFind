@@ -99,7 +99,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <div className="container mx-auto py-8">
         <h1 className="text-center text-[#1e1e1f] dark:text-[#e5e7eb] text-4xl font-bold mb-6">
@@ -177,7 +177,7 @@ const Home = () => {
         )}
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

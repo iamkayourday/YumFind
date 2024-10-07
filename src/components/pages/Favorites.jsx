@@ -15,9 +15,9 @@ const Favorites = () => {
   }, []);
 
   return (
-    <>
-      <Header className="h-screen" />
-      <div className="container mx-auto py-8">
+    <div className="flex flex-col min-h-screen"> {/* Flex container with full height */}
+      <Header />
+      <div className="container mx-auto py-8 flex-grow"> {/* Allow this div to grow */}
         <h1 className="text-center text-[#1e1e1f] dark:text-[#e5e7eb] text-4xl font-bold mb-6">
           Your Favorite Recipes
         </h1>
@@ -57,8 +57,8 @@ const Favorites = () => {
           </div>
         )}
       </div>
-      <Footer />
-    </>
+      <Footer /> 
+    </div>
   );
 };
 

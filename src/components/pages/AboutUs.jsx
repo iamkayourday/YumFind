@@ -4,9 +4,9 @@ import Footer from "./Footer";
 
 const AboutUs = () => {
   return (
-    <>
-      <Header className="h-screen" />
-      <div className=" container mx-auto py-12 px-4 md:px-8">
+    <div className="flex flex-col min-h-screen"> {/* Flex container with full height */}
+      <Header />
+      <div className="container mx-auto py-12 px-4 md:px-8 flex-grow"> {/* Allow this div to grow */}
         {/* Main Heading */}
         <h1 className="text-4xl font-bold text-center text-[#1e1e1f] mb-8 dark:text-white">
           About <span className="text-[#1e1e1f]">YumFind</span>
@@ -77,7 +77,7 @@ const AboutUs = () => {
         </h3>
         <ul className="list-disc list-inside space-y-2 text-[#1e1e1f] dark:text-[#e5e7eb]">
           <li>Browse the default recipes on the home page.</li>
-          <li>Use the search bar to find specific recipes by name</li>
+          <li>Use the search bar to find specific recipes by name.</li>
           <li>
             Click on a recipe to view the details, including ingredients and
             cooking instructions.
@@ -85,8 +85,8 @@ const AboutUs = () => {
         </ul>
       </div>
 
-      <Footer />
-    </>
+      <Footer /> {/* Footer will be at the bottom */}
+    </div>
   );
 };
 
