@@ -4,7 +4,7 @@ import { Tooltip } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#e5e7eb] text-[#1e1e1f] dark:bg-[#1e1e1f] dark:text-[#e5e7eb] py-6 mt-10 border-t border-[#1e1e1f] dark:border-[#e5e7eb]">
+    <footer className="bg-[#e5e7eb] text-[#1e1e1f] dark:bg-[#1e1e1f] dark:text-[#e5e7eb] py-6 mt-10 border-t-2 border-[#1e1e1f] dark:border-[#e5e7eb]">
       <div className="container mx-auto px-4 mt-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
