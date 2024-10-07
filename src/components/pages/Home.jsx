@@ -101,7 +101,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto py-8 flex-grow">
         <h1 className="text-center text-[#1e1e1f] dark:text-[#e5e7eb] text-4xl font-bold mb-6">
           Finding time to cook can be hard. Finding a recipe shouldn’t be.
         </h1>

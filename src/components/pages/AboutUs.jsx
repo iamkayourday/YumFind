@@ -4,9 +4,9 @@ import Footer from "./Footer";
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col min-h-screen"> {/* Flex container with full height */}
+    <div className="flex flex-col min-h-screen"> 
       <Header />
-      <div className="container mx-auto py-12 px-4 md:px-8 flex-grow"> {/* Allow this div to grow */}
+      <div className="container mx-auto py-12 px-4 md:px-8 flex-grow"> 
         {/* Main Heading */}
         <h1 className="text-4xl font-bold text-center text-[#1e1e1f] mb-8 dark:text-white">
           About <span className="text-[#1e1e1f]">YumFind</span>
