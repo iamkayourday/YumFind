@@ -21,7 +21,7 @@ const AboutUs = () => {
         </p>
 
         {/* Mission Section */}
-        <h2 className="text-3xl font-bold text-[#1e1e1f] mb-4 text-center">
+        <h2 className="text-3xl font-bold text-[#1e1e1f] dark:text-[#e5e7eb] mb-4 text-center">
           Our Mission
         </h2>
         <p className="dark:text-[#e5e7eb] text-lg text-[#1e1e1f] mb-6 text-center max-w-2xl mx-auto">
@@ -38,41 +38,41 @@ const AboutUs = () => {
           <li>
             <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
               Sign In:
-            </span>{" "}
+            </span>
             Access our vast recipe library by signing in with your credentials.
           </li>
           <li>
             <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
               Explore Recipes:
-            </span>{" "}
+            </span>
             Discover 25 curated default recipes, carefully selected for your
             culinary delight.
           </li>
           <li>
             <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
               Search:
-            </span>{" "}
+            </span>
             Type your desired recipe name, ingredient, or cuisine in the search
             bar to find what you need.
           </li>
           <li>
             <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
               Browse:
-            </span>{" "}
+            </span>
             Explore relevant recipe matches from our extensive API-powered
             database.
           </li>
           <li>
             <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
               Details:
-            </span>{" "}
+            </span>
             View ingredients, instructions, cooking time, and nutritional
             information for each recipe.
           </li>
         </ol>
 
         {/* Getting Started Section */}
-        <h3 className="text-2xl font-semibold text-[#1e1e1f] mb-4 mt-8">
+        <h3 className="text-2xl font-semibold text-[#1e1e1f] dark:text-[#e5e7eb] mb-4 mt-8">
           Getting Started
         </h3>
         <ul className="list-disc list-inside space-y-2 text-[#1e1e1f] dark:text-[#e5e7eb]">
