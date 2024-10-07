@@ -13,6 +13,8 @@
     "@chakra-ui/react": "^2.10.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@nextui-org/accordion": "^2.0.40",
+    "@nextui-org/react": "^2.4.8",
     "axios": "^1.7.7",
     "formik": "^2.4.6",
     "framer-motion": "^11.11.1",
