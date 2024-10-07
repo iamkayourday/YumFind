@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Mode from "../Utils/Mode"
-import logo from "../../assets/logo.svg"
+import Mode from "../Utils/Mode";
+import logo from "../../assets/logo.svg";
 import LogOut from "../Auth/LogOut";
 
 const Header = () => {
@@ -15,12 +15,12 @@ const Header = () => {
   // Disable scrolling when the menu is open
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     };
   }, [menuOpen]);
 
@@ -76,7 +76,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/home"
-              onClick={toggleMenu} 
+              onClick={toggleMenu}
             >
               Home
             </Link>
@@ -85,7 +85,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/favorites"
-              onClick={toggleMenu} 
+              onClick={toggleMenu}
             >
               Favorites
             </Link>
@@ -94,7 +94,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/aboutUs"
-              onClick={toggleMenu} 
+              onClick={toggleMenu}
             >
               About Us
             </Link>
@@ -103,7 +103,7 @@ const Header = () => {
             <Link
               className="text-[#1e1e1f] dark:text-[#e5e7eb] font-bold text-lg hover:text-[#343a40] dark:hover:text-[#6c757d]"
               to="/faqs"
-              onClick={toggleMenu} 
+              onClick={toggleMenu}
             >
               FAQs
             </Link>

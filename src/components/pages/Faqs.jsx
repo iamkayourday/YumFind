@@ -18,9 +18,9 @@ const Faqs = () => {
             title="What is YumFind?"
             className="text-[#1e1e1f] dark:text-white"
           >
-            YumFind is a platform where users can discover a wide variety of recipes
-            from different cuisines. You can browse through recipes to find
-            inspiration for your next meal!
+            YumFind is a platform where users can discover a wide variety of
+            recipes from different cuisines. You can browse through recipes to
+            find inspiration for your next meal!
           </AccordionItem>
           <AccordionItem
             key="2"
@@ -28,7 +28,9 @@ const Faqs = () => {
             title="How do I search for recipes?"
             className="text-[#1e1e1f] dark:text-white"
           >
-            You can use the search bar at the top of the homepage to search for recipes by name. Simply enter a recipe title to find what you're looking for (e.g., sushi, shawarma, cake) in the search bar.
+            You can use the search bar at the top of the homepage to search for
+            recipes by name. Simply enter a recipe title to find what you're
+            looking for (e.g., sushi, shawarma, cake) in the search bar.
           </AccordionItem>
           <AccordionItem
             key="3"
@@ -36,7 +38,9 @@ const Faqs = () => {
             title="Can I submit my own recipes?"
             className="text-[#1e1e1f] dark:text-white"
           >
-            At the moment, YumFind does not support recipe submissions directly through the platform. The recipes available come from a collection provided from an external API.
+            At the moment, YumFind does not support recipe submissions directly
+            through the platform. The recipes available come from a collection
+            provided from an external API.
           </AccordionItem>
           <AccordionItem
             key="4"
@@ -44,7 +48,8 @@ const Faqs = () => {
             title="How do I save recipes for later?"
             className="text-[#1e1e1f] dark:text-white"
           >
-            Easily save recipes by clicking the "Bookmark" button on the recipe page. Access your saved recipes anytime on the Favorites page.
+            Easily save recipes by clicking the "Bookmark" button on the recipe
+            page. Access your saved recipes anytime on the Favorites page.
           </AccordionItem>
         </Accordion>
       </div>

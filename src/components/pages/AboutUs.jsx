@@ -84,7 +84,7 @@ const AboutUs = () => {
           </li>
         </ul>
       </div>
-      
+
       <Footer />
     </>
   );

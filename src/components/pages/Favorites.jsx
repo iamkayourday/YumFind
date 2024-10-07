@@ -48,7 +48,9 @@ const Favorites = () => {
                   <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
                     Category: {recipe.strCategory}
                   </p>
-                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">Region: {recipe.strArea}</p>
+                  <p className="text-[#1e1e1f] dark:text-[#e5e7eb]">
+                    Region: {recipe.strArea}
+                  </p>
                 </div>
               </div>
             ))}
