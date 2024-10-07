@@ -9,7 +9,7 @@ const AboutUs = () => {
       <div className="container mx-auto py-12 px-4 md:px-8 flex-grow"> 
         {/* Main Heading */}
         <h1 className="text-4xl font-bold text-center text-[#1e1e1f] mb-8 dark:text-white">
-          About <span className="text-[#1e1e1f]">YumFind</span>
+          About YumFind
         </h1>
 
         {/* Intro Section */}
