@@ -51,6 +51,15 @@ const Faqs = () => {
             Easily save recipes by clicking the "Bookmark" button on the recipe
             page. Access your saved recipes anytime on the Favorites page.
           </AccordionItem>
+          <AccordionItem
+            key="5"
+            aria-label="Accordion 5"
+            title="Who is the developer?"
+            className="text-[#1e1e1f] dark:text-white"
+          >
+            Abdulbasit, the guy who still can't believe he managed to build this
+            website without too many errors🙂.
+          </AccordionItem>
         </Accordion>
       </div>
       <Footer />
