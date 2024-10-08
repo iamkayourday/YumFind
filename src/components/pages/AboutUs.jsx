@@ -6,8 +6,9 @@ const AboutUs = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex-grow flex items-center justify-center"> {/* Center content */}
-        <div className="container mx-auto py-12 px-4 md:px-8 text-center"> {/* Centered content */}
+      <div className="flex-grow flex items-center justify-center">
+        <div className="container mx-auto py-12 px-4 md:px-8 text-center">
+          
           {/* Main Heading */}
           <h1 className="text-4xl font-bold text-[#1e1e1f] mb-8 dark:text-white">
             About YumFind
@@ -27,8 +28,8 @@ const AboutUs = () => {
           </h2>
           <p className="text-left dark:text-[#e5e7eb] text-lg text-[#1e1e1f] mb-6 max-w-2xl mx-auto">
             We aim to make cooking more enjoyable and accessible through
-            easy-to-follow recipes, user-friendly search, and a curated selection
-            of meals.
+            easy-to-follow recipes, user-friendly search, and a curated
+            selection of meals.
           </p>
 
           {/* Steps Section */}
@@ -40,7 +41,8 @@ const AboutUs = () => {
               <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
                 Sign In:
               </span>
-              Access our vast recipe library by signing in with your credentials.
+              Access our vast recipe library by signing in with your
+              credentials.
             </li>
             <li>
               <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
@@ -53,8 +55,8 @@ const AboutUs = () => {
               <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
                 Search:
               </span>
-              Type your desired recipe name, ingredient, or cuisine in the search
-              bar to find what you need.
+              Type your desired recipe name, ingredient, or cuisine in the
+              search bar to find what you need.
             </li>
             <li>
               <span className="font-bold text-[#1e1e1f] dark:text-[#e5e7eb]">
@@ -86,7 +88,7 @@ const AboutUs = () => {
           </ul>
         </div>
       </div>
-      <Footer /> {/* Footer will be at the bottom */}
+      <Footer />
     </div>
   );
 };

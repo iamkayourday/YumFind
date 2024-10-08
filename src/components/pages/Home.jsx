@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import Footer from "./Footer";
 import Header from "./Header";
-import { FaRegBookmark, FaBookmark } from "react-icons/fa"; // Importing React Icons
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,7 +14,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
-  const [favorites, setFavorites] = useState([]); // State for favorites
+  const [favorites, setFavorites] = useState([]);
 
   // Fetch recipes and retrieve stored username and favorites when the page loads
   useEffect(() => {
@@ -26,7 +26,7 @@ const Home = () => {
     if (storedUsername) {
       setUsername(storedUsername);
     }
-    setFavorites(storedFavorites); // Initialize favorites state
+    setFavorites(storedFavorites);
   }, []);
 
   // Fetch recipes for search and default recipes from the API
@@ -66,24 +66,25 @@ const Home = () => {
 
   // Handle search term and fetch recipe when the search button is clicked
   const handleSearch = (term) => {
-    fetchRecipes(term); // Fetch the provided search term
+    fetchRecipes(term);
   };
 
   // Toggle favorite status
   const toggleFavorite = (recipe) => {
     const isFavorite = favorites.some((fav) => fav.idMeal === recipe.idMeal);
     const updatedFavorites = isFavorite
-      ? favorites.filter((fav) => fav.idMeal !== recipe.idMeal) // Remove the recipe from favorite from favorites
-      : [...favorites, recipe]; // Add the recipe to to favorites
+      ? favorites.filter((fav) => fav.idMeal !== recipe.idMeal)
+      : [...favorites, recipe];
 
     setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Sync with local storage
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 
     // Show toast message
     const toastMessage = isFavorite
       ? `${recipe.strMeal} removed from favorites`
       : `${recipe.strMeal} added to favorites`;
-    toast.success(toastMessage); // Display the toast notification
+    // Display the toast notification
+    toast.success(toastMessage);
   };
 
   // Generate greeting message based on the current time
@@ -118,7 +119,6 @@ const Home = () => {
 
         {/* Greeting message */}
         <h2 className="mb-2 px-4 text-xl text-[#1e1e1f] dark:text-[#e5e7eb]">
-          {" "}
           What are you cooking today?
         </h2>
 
