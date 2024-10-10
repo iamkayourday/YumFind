@@ -38,7 +38,7 @@ const Faqs = () => {
           title="How do I check the recipe details" 
           className="text-[#1e1e1f] dark:text-white"
         >
-          <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-300">
+          <p className="text-sm leading-relaxed text-[#1e1e1f] dark:text-gray-300">
             To check recipe details, follow these steps:
             <ol className="ml-4 list-decimal">
               <li>Click on the recipe title.</li>
