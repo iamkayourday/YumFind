@@ -32,9 +32,24 @@ const Faqs = () => {
             recipes by name. Simply enter a recipe title to find what you're
             looking for (e.g., sushi, shawarma, cake) in the search bar.
           </AccordionItem>
+          <AccordionItem 
+          key="3" 
+          aria-label="Accordion 3" 
+          title="How do I check the recipe details" 
+          className="text-[#1e1e1f] dark:text-white"
+        >
+          <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-300">
+            To check recipe details, follow these steps:
+            <ol className="ml-4 list-decimal">
+              <li>Click on the recipe title.</li>
+              <li>Scroll down to view ingredients, instructions, and a youtube video.</li>
+            </ol>
+          </p>
+        </AccordionItem>
+
           <AccordionItem
-            key="3"
-            aria-label="Accordion 3"
+            key="4"
+            aria-label="Accordion 4"
             title="Can I submit my own recipes?"
             className="text-[#1e1e1f] dark:text-white"
           >
@@ -43,8 +58,8 @@ const Faqs = () => {
             provided from an external API.
           </AccordionItem>
           <AccordionItem
-            key="4"
-            aria-label="Accordion 4"
+            key="5"
+            aria-label="Accordion 5"
             title="How do I save recipes for later?"
             className="text-[#1e1e1f] dark:text-white"
           >
@@ -52,8 +67,8 @@ const Faqs = () => {
             page. Access your saved recipes anytime on the Favorites page.
           </AccordionItem>
           <AccordionItem
-            key="5"
-            aria-label="Accordion 5"
+            key="6"
+            aria-label="Accordion 6"
             title="Who is the developer?"
             className="text-[#1e1e1f] dark:text-white"
           >
